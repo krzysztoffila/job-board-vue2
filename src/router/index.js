@@ -1,3 +1,4 @@
+import App from "@/App.vue";
 import Vue from "vue";
 import VueRouter from "vue-router";
 
@@ -5,9 +6,9 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    // path: "/",
-    // name: "home",
-    // component: HomeView,
+    path: "/",
+    name: "home",
+    component: App,
   },
 ];
 
