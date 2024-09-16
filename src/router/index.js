@@ -1,4 +1,5 @@
 import App from "@/App.vue";
+import AddJob from "@/components/addJob.vue";
 import Vue from "vue";
 import VueRouter from "vue-router";
 
@@ -9,6 +10,11 @@ const routes = [
     path: "/",
     name: "home",
     component: App,
+  },
+  {
+    path: "/",
+    name: "home",
+    component: AddJob,
   },
 ];
 
