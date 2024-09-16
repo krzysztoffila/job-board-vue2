@@ -10,6 +10,44 @@
         name="job-content"
         id="job-content"
       ></textarea>
+      <div id="checkboxes">
+        <input
+          v-model="job.categories"
+          type="checkbox"
+          name="frontend"
+          id="categories-frontend"
+          value="frontend"
+        />
+        <label for="categories-frontend">Frontend</label>
+
+        <input
+          v-model="job.categories"
+          type="checkbox"
+          name="backend"
+          id="categories-backend"
+          value="backend"
+        />
+        <label for="categories-backend">Backend</label>
+
+        <input
+          v-model="job.categories"
+          type="checkbox"
+          name="fullstack"
+          id="categories-fullstack"
+          value="fullstack"
+        />
+        <label for="categories-fullstack">Fullstack</label>
+
+        <input
+          v-model="job.categories"
+          type="checkbox"
+          name="ai"
+          id="categories-ai"
+          value="ai"
+        />
+        <label for="categories-ai">AI</label>
+      </div>
+
       <label for="job-tags">Tags:</label>
       <input v-model.lazy="job.tags" type="text" id="job-tags" required />
     </form>
@@ -33,6 +71,7 @@ export default {
         content: "",
         tagInput: "",
         tags: [],
+        categories: [],
       },
     };
   },
@@ -123,7 +162,75 @@ p {
 p:first-of-type {
   font-weight: bold;
 }
+#checkboxes {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
 
+#checkboxes label {
+  position: relative;
+  padding-left: 30px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}
+
+#checkboxes input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+#checkboxes input[type="checkbox"] + label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+#checkboxes input[type="checkbox"]:checked + label::before {
+  background: linear-gradient(45deg, #00ccff, #ff0099);
+  border-color: #fff;
+}
+
+#checkboxes input[type="checkbox"] + label::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  transform: scale(0);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+#checkboxes input[type="checkbox"]:checked + label::after {
+  opacity: 1;
+  transform: scale(1);
+}
+#checkboxes input[type="checkbox"] + label::after {
+  content: none;
+}
+
+#checkboxes input[type="checkbox"]:checked + label::after {
+  content: none;
+}
+
+#checkboxes input[type="checkbox"]:checked + label::before {
+  background: linear-gradient(45deg, #00ccff, #ff0099);
+  border-color: #fff;
+}
 @media (max-width: 768px) {
   #add-job {
     width: 80%;
@@ -141,6 +248,9 @@ p:first-of-type {
   textarea {
     font-size: 14px;
     padding: 10px;
+  }
+  #checkboxes {
+    flex-wrap: wrap;
   }
 }
 
@@ -166,6 +276,21 @@ p:first-of-type {
 
   form {
     gap: 10px;
+  }
+  #checkboxes label {
+    font-size: 14px;
+  }
+
+  #checkboxes input[type="checkbox"] + label::before {
+    width: 16px;
+    height: 16px;
+  }
+
+  #checkboxes input[type="checkbox"]:checked + label::after {
+    left: 4px;
+    top: 4px;
+    width: 6px;
+    height: 6px;
   }
 }
 </style>
