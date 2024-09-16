@@ -7,7 +7,7 @@ import addJob from "./components/addJob.vue";
 export default {
   components: { addJob },
   data() {
-    return;
+    return {};
   },
   methods: {},
 };

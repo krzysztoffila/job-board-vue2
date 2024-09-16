@@ -1,16 +1,25 @@
 <template>
-  <div id="add-blog">
+  <div id="add-job">
     <h2>Add a New Job Post</h2>
     <form>
-      <label for="job-title">Job title</label>
-      <input type="text" id="job-title" required />
+      <label for="job-title">Job title:</label>
+      <input v-model.lazy="job.title" type="text" id="job-title" required />
       <label for="job-content">Job Description:</label>
-      <textarea name="job-content" id="job-content"></textarea>
+      <textarea
+        v-model.lazy="job.content"
+        name="job-content"
+        id="job-content"
+      ></textarea>
+      <label for="job-tags">Tags:</label>
+      <input v-model.lazy="job.tags" type="text" id="job-tags" required />
     </form>
     <div id="preview">
       <h3>Job Preview</h3>
-      <p>Job title:</p>
+      <p>Job title:{{ job.title }}</p>
       <p>Job Description:</p>
+      <p>{{ job.content }}</p>
+      <p>Tags:</p>
+      <span v-for="(tag, index) in job.tags" :key="index">{{ tag }}</span>
     </div>
   </div>
 </template>
@@ -18,13 +27,27 @@
 <script>
 export default {
   data() {
-    return;
+    return {
+      job: {
+        title: "",
+        content: "",
+        tagInput: "",
+        tags: [],
+      },
+    };
   },
-  methods: {},
+  methods: {
+    updateTags() {
+      this.job.tags = this.job.tagInput
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter((tag) => tag !== "");
+    },
+  },
 };
 </script>
 <style>
-#add-blog {
+#add-job {
   width: 50%;
   margin: 0 auto;
   padding: 20px;
@@ -35,7 +58,7 @@ export default {
   transition: transform 0.3s ease;
 }
 
-#add-blog:hover {
+#add-job:hover {
   transform: scale(1.02);
 }
 
@@ -102,7 +125,7 @@ p:first-of-type {
 }
 
 @media (max-width: 768px) {
-  #add-blog {
+  #add-job {
     width: 80%;
   }
 
@@ -122,7 +145,7 @@ p:first-of-type {
 }
 
 @media (max-width: 480px) {
-  #add-blog {
+  #add-job {
     width: 100%;
     padding: 15px;
   }
