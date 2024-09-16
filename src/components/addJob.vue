@@ -101,7 +101,6 @@ p:first-of-type {
   font-weight: bold;
 }
 
-/* Responsywność */
 @media (max-width: 768px) {
   #add-blog {
     width: 80%;
