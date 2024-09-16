@@ -100,4 +100,50 @@ p {
 p:first-of-type {
   font-weight: bold;
 }
+
+/* Responsywność */
+@media (max-width: 768px) {
+  #add-blog {
+    width: 80%;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  input[type="text"],
+  textarea {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  #add-blog {
+    width: 100%;
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+
+  input[type="text"],
+  textarea {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  form {
+    gap: 10px;
+  }
+}
 </style>
