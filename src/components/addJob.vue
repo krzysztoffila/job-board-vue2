@@ -56,8 +56,10 @@
       <p>Job title:{{ job.title }}</p>
       <p>Job Description:</p>
       <p>{{ job.content }}</p>
-      <p>Tags:</p>
-      <span v-for="(tag, index) in job.tags" :key="index">{{ tag }}</span>
+      <p>
+        Tags:
+        <span v-for="(tag, index) in job.tags" :key="index">{{ tag }}</span>
+      </p>
     </div>
   </div>
 </template>
