@@ -51,6 +51,12 @@
         Tags:
         <span v-for="(tag, index) in job.tags" :key="index">{{ tag }}</span>
       </p>
+      <p>Job Levels:</p>
+      <ul class="job-levels">
+        <li v-for="level in job.levels" :key="level">
+          {{ levelToUpper(level) }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -74,6 +80,9 @@ export default {
         .split(",")
         .map((tag) => tag.trim())
         .filter((tag) => tag !== "");
+    },
+    levelToUpper(level) {
+      return level[0].toUpperCase() + level.slice(1).toLowerCase();
     },
   },
 };
@@ -224,6 +233,29 @@ p:first-of-type {
   background: linear-gradient(45deg, #00ccff, #ff0099);
   border-color: #fff;
 }
+
+.job-levels {
+  list-style: none;
+  padding-left: 0;
+  min-height: 70px;
+}
+
+.job-levels li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 5px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.job-levels li::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  color: #00ccff;
+  font-weight: bold;
+}
+
 @media (max-width: 768px) {
   #add-job {
     width: 80%;
