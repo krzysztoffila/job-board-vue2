@@ -12,40 +12,31 @@
       ></textarea>
       <div id="checkboxes">
         <input
-          v-model="job.categories"
+          v-model="job.levels"
           type="checkbox"
-          name="frontend"
-          id="categories-frontend"
-          value="frontend"
+          name="junior"
+          id="level-junior"
+          value="junior"
         />
-        <label for="categories-frontend">Frontend</label>
+        <label for="level-junior">Junior</label>
 
         <input
-          v-model="job.categories"
+          v-model="job.levels"
           type="checkbox"
-          name="backend"
-          id="categories-backend"
-          value="backend"
+          name="middle"
+          id="level-middle"
+          value="middle"
         />
-        <label for="categories-backend">Backend</label>
+        <label for="level-middle">Middle</label>
 
         <input
-          v-model="job.categories"
+          v-model="job.levels"
           type="checkbox"
-          name="fullstack"
-          id="categories-fullstack"
-          value="fullstack"
+          name="senior"
+          id="level-senior"
+          value="senior"
         />
-        <label for="categories-fullstack">Fullstack</label>
-
-        <input
-          v-model="job.categories"
-          type="checkbox"
-          name="ai"
-          id="categories-ai"
-          value="ai"
-        />
-        <label for="categories-ai">AI</label>
+        <label for="level-senior">Senior</label>
       </div>
 
       <label for="job-tags">Tags:</label>
@@ -73,7 +64,7 @@ export default {
         content: "",
         tagInput: "",
         tags: [],
-        categories: [],
+        levels: [],
       },
     };
   },
