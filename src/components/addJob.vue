@@ -38,7 +38,16 @@
         />
         <label for="level-senior">Senior</label>
       </div>
-
+      <label for="category">Category:</label>
+      <select v-model="job.category" id="category">
+        <option
+          v-for="category in job.categories"
+          :key="category"
+          :value="category"
+        >
+          {{ category }}
+        </option>
+      </select>
       <label for="job-tags">Tags:</label>
       <input v-model.lazy="job.tags" type="text" id="job-tags" required />
     </form>
@@ -51,7 +60,11 @@
         Tags:
         <span v-for="(tag, index) in job.tags" :key="index">{{ tag }}</span>
       </p>
-      <p>Job Levels:</p>
+      <p>
+        Category: <span>{{ job.category }}</span>
+      </p>
+
+      <p>Job Level:</p>
       <ul class="job-levels">
         <li v-for="level in job.levels" :key="level">
           {{ levelToUpper(level) }}
@@ -71,6 +84,14 @@ export default {
         tagInput: "",
         tags: [],
         levels: [],
+        categories: [
+          "Frontend",
+          "Backend",
+          "Fullstack",
+          "AI/ML",
+          "Data Science",
+        ],
+        category: "",
       },
     };
   },
@@ -255,6 +276,40 @@ p:first-of-type {
   color: #00ccff;
   font-weight: bold;
 }
+select {
+  padding: 12px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  appearance: none; /* Hides default dropdown icon */
+  position: relative;
+  background-image: linear-gradient(45deg, #00ccff, #ff0099);
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  transition: background 0.3s ease;
+}
+
+select:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+  outline: none;
+}
+
+select option {
+  background-color: #333;
+  color: #fff;
+}
+
+select:hover {
+  background: linear-gradient(45deg, #00ccff, #ff0099);
+  transform: scale(1.02);
+}
+
+select:focus {
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
 
 @media (max-width: 768px) {
   #add-job {
@@ -276,6 +331,10 @@ p:first-of-type {
   }
   #checkboxes {
     flex-wrap: wrap;
+  }
+  select {
+    font-size: 14px;
+    padding: 10px;
   }
 }
 
@@ -316,6 +375,10 @@ p:first-of-type {
     top: 4px;
     width: 6px;
     height: 6px;
+  }
+  select {
+    font-size: 12px;
+    padding: 8px;
   }
 }
 </style>
