@@ -49,7 +49,13 @@
         </option>
       </select>
       <label for="job-tags">Tags:</label>
-      <input v-model.lazy="job.tags" type="text" id="job-tags" required />
+      <input
+        v-model="job.tagInput"
+        @input="updateTags"
+        type="text"
+        id="job-tags"
+        placeholder="Enter comma-separated tags"
+      />
     </form>
     <div id="preview">
       <h3>Job Preview</h3>
@@ -63,7 +69,6 @@
       <p>
         Category: <span>{{ job.category }}</span>
       </p>
-
       <p>Job Level:</p>
       <ul class="job-levels">
         <li v-for="level in job.levels" :key="level">
@@ -99,8 +104,7 @@ export default {
     updateTags() {
       this.job.tags = this.job.tagInput
         .split(",")
-        .map((tag) => tag.trim())
-        .filter((tag) => tag !== "");
+        .filter((tag) => tag.length > 0);
     },
     levelToUpper(level) {
       return level[0].toUpperCase() + level.slice(1).toLowerCase();
@@ -309,6 +313,31 @@ select:hover {
 
 select:focus {
   box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+input[type="text"] {
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transition: background 0.3s ease;
+}
+
+input[type="text"]::placeholder {
+  color: #ddd;
+  font-style: italic;
+  opacity: 1;
+  transition: color 0.3s ease;
+}
+
+input[type="text"]:focus::placeholder {
+  color: #00ccff;
+}
+
+input[type="text"]:focus {
+  background: rgba(255, 255, 255, 0.3);
+  outline: none;
 }
 
 @media (max-width: 768px) {
