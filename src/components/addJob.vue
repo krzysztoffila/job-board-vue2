@@ -58,6 +58,14 @@
       />
     </form>
     <button @click.prevent="addJob" class="gradient-button">Add Job!</button>
+    <!-- Popup  -->
+    <div v-if="isSubmitted" class="popup">
+      <div class="popup-content">
+        <h3>Job offer added!</h3>
+        <p>Thank you for adding your new job offer.</p>
+        <button @click="closePopup">Close</button>
+      </div>
+    </div>
     <div id="preview">
       <h3>Job Preview</h3>
       <p>Job title:{{ job.title }}</p>
@@ -99,6 +107,7 @@ export default {
         ],
         category: "",
       },
+      isSubmitted: false,
     };
   },
   methods: {
@@ -124,10 +133,23 @@ export default {
         .post(dbUrl, jobData)
         .then((response) => {
           console.log("Job added successfully:", response.body);
+          this.isSubmitted = true;
+          this.resetForm();
         })
         .catch((error) => {
           console.error("Error adding job:", error);
         });
+    },
+    resetForm() {
+      this.job.title = "";
+      this.job.content = "";
+      this.job.tagInput = "";
+      this.job.tags = [];
+      this.job.levels = [];
+      this.job.category = "";
+    },
+    closePopup() {
+      this.isSubmitted = false;
     },
   },
 };

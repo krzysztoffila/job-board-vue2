@@ -1,7 +1,8 @@
 /* Globalne style dla całego kontenera */
 #add-job {
+  position: relative;
   width: 50%;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 20px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
@@ -41,6 +42,7 @@ p:first-of-type {
   font-weight: bold;
   color: #fff;
 }
+
 /* Styl formularza */
 form {
   display: flex;
@@ -84,7 +86,6 @@ select {
   border-radius: 8px;
   color: #fff;
   appearance: none;
-  position: relative;
   background-image: linear-gradient(45deg, #00ccff, #ff0099);
   background-position: right 10px center;
   background-repeat: no-repeat;
@@ -106,6 +107,7 @@ select option {
   background-color: #333;
   color: #fff;
 }
+
 /* Przycisk gradientowy */
 .gradient-button {
   background: linear-gradient(45deg, #6a5af9, #b150f2);
@@ -124,6 +126,7 @@ select option {
   background: linear-gradient(45deg, #b150f2, #6a5af9);
   transform: scale(1.05);
 }
+
 /* Sekcja podglądu */
 #preview {
   margin-top: 20px;
@@ -157,6 +160,7 @@ select option {
   border-radius: 5px;
   font-weight: bold;
 }
+
 /* Checkboxy */
 #checkboxes {
   display: flex;
@@ -215,6 +219,7 @@ select option {
   opacity: 1;
   transform: scale(1);
 }
+
 /* Media Queries */
 @media (max-width: 768px) {
   #add-job {
@@ -289,4 +294,53 @@ select option {
     font-size: 12px;
     padding: 8px;
   }
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  top: 0;
+  left: -45%;
+  width: 100vw;
+  height: 120vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.popup-content {
+  background: linear-gradient(135deg, #3b82f6, #ec4899);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.popup-content h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.popup-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.popup-content button {
+  background-color: #fff;
+  color: #3b82f6;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.popup-content button:hover {
+  background-color: #f1f1f1;
 }
