@@ -57,7 +57,7 @@
         placeholder="Enter comma-separated tags"
       />
     </form>
-    <button class="gradient-button">Add Job!</button>
+    <button @click.prevent="addJob" class="gradient-button">Add Job!</button>
     <div id="preview">
       <h3>Job Preview</h3>
       <p>Job title:{{ job.title }}</p>
@@ -109,6 +109,25 @@ export default {
     },
     levelToUpper(level) {
       return level[0].toUpperCase() + level.slice(1).toLowerCase();
+    },
+    addJob() {
+      const dbUrl =
+        "https://job-dashboard-vue2-default-rtdb.firebaseio.com/jobs.json";
+      const jobData = {
+        title: this.job.title,
+        content: this.job.content,
+        tags: this.job.tags,
+        levels: this.job.levels,
+        category: this.job.category,
+      };
+      this.$http
+        .post(dbUrl, jobData)
+        .then((response) => {
+          console.log("Job added successfully:", response.body);
+        })
+        .catch((error) => {
+          console.error("Error adding job:", error);
+        });
     },
   },
 };

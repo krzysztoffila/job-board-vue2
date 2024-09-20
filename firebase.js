@@ -1,6 +1,4 @@
 import { initializeApp } from "firebase/app";
-// import firebase from "firebase/app";
-// import "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
@@ -13,11 +11,3 @@ const firebaseConfig = {
 };
 
 initializeApp(firebaseConfig);
-/* eslint-enable no-unused-vars */
-
-// const app = initializeApp(firebaseConfig);
-
-// firebase.initializeApp(firebaseConfig);
-
-// const db = firebase.firestore();
-// export { db };
