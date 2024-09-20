@@ -57,7 +57,13 @@
         placeholder="Enter comma-separated tags"
       />
     </form>
-    <button @click.prevent="addJob" class="gradient-button">Add Job!</button>
+    <button
+      @click.prevent="addJob"
+      class="gradient-button"
+      :disabled="isSubmitDisabled"
+    >
+      Add Job!
+    </button>
     <!-- Popup  -->
     <div v-if="isSubmitted" class="popup">
       <div class="popup-content">
@@ -108,9 +114,27 @@ export default {
         category: "",
       },
       isSubmitted: false,
+      isSubmitDisabled: true,
     };
   },
+  watch: {
+    job: {
+      deep: true,
+      handler() {
+        this.checkFormValidity();
+      },
+    },
+  },
   methods: {
+    checkFormValidity() {
+      this.isSubmitDisabled = !(
+        this.job.title &&
+        this.job.content &&
+        this.job.tagInput &&
+        this.job.levels.length > 0 &&
+        this.job.category
+      );
+    },
     updateTags() {
       this.job.tags = this.job.tagInput
         .split(",")
@@ -147,6 +171,7 @@ export default {
       this.job.tags = [];
       this.job.levels = [];
       this.job.category = "";
+      this.isSubmitDisabled = true;
     },
     closePopup() {
       this.isSubmitted = false;
