@@ -1,11 +1,15 @@
 <template>
-  <add-job> </add-job>
+  <div class="container">
+    <add-job></add-job>
+    <show-jobs></show-jobs>
+  </div>
 </template>
 
 <script>
+import showJobs from "@/components/showJobs.vue";
 import addJob from "./components/addJob.vue";
 export default {
-  components: { addJob },
+  components: { addJob, showJobs },
   data() {
     return {};
   },
@@ -24,5 +28,12 @@ body {
   align-items: center;
   justify-content: center;
   padding: 10px;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 </style>
