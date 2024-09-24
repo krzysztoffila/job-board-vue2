@@ -1,15 +1,15 @@
 <template>
   <div class="container">
-    <add-job></add-job>
+    <!-- <add-job></add-job> -->
     <show-jobs></show-jobs>
   </div>
 </template>
 
 <script>
 import showJobs from "@/components/showJobs.vue";
-import addJob from "./components/addJob.vue";
+// import addJob from "./components/addJob.vue";
 export default {
-  components: { addJob, showJobs },
+  components: { showJobs },
   data() {
     return {};
   },
