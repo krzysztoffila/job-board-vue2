@@ -13,7 +13,7 @@
           <p>{{ job.content }}</p>
         </div>
         <div class="bookmark-icon">
-          <img src="@/assets/icons/bookmark.svg" alt="Bookmark Icon" />
+          <img src="@/assets/icons/bookmark.svg" alt="Bookmark" />
         </div>
       </div>
     </div>
@@ -43,9 +43,11 @@ export default {
 </script>
 
 <style scoped>
+#show-jobs h1 {
+  text-align: center;
+}
 .job-card {
   display: flex;
-  align-items: center;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -81,16 +83,11 @@ export default {
   margin: 5px 0;
 }
 
-.bookmark-icon {
+.job-card .bookmark-icon {
   margin-left: auto;
   width: 24px;
   height: 24px;
   cursor: pointer;
-}
-
-.bookmark-icon img {
-  width: 100%;
-  height: auto;
 }
 
 @media (max-width: 768px) {
