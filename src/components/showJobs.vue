@@ -8,7 +8,10 @@
         <div class="job-info">
           <h2>{{ job.title }}</h2>
           <p><strong>Category:</strong> {{ job.category }}</p>
-          <p><strong>Level:</strong> {{ job.levels.join(", ") }}</p>
+          <p>
+            <strong>Level:</strong>
+            {{ job.levels.join(", ") | toUppercase }}
+          </p>
           <p><strong>Tags:</strong> {{ job.tags.join(", ") }}</p>
           <p>{{ job.content }}</p>
         </div>
@@ -21,11 +24,15 @@
 </template>
 
 <script>
+import { toUppercase } from "../helpers/filters.js";
 export default {
   data() {
     return {
       jobs: [],
     };
+  },
+  filters: {
+    toUppercase,
   },
   created() {
     const dbUrl =
