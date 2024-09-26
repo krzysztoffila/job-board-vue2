@@ -15,8 +15,15 @@
           <p><strong>Tags:</strong> {{ job.tags.join(", ") }}</p>
           <p>{{ job.content }}</p>
         </div>
-        <div class="bookmark-icon">
-          <img src="@/assets/icons/bookmark.svg" alt="Bookmark" />
+        <div class="bookmark-icon" @click="toggleBookmark(job)">
+          <img
+            :src="
+              job.bookmarked
+                ? require('@/assets/icons/bookmark_heart.svg')
+                : require('@/assets/icons/bookmark.svg')
+            "
+            alt="Bookmark"
+          />
         </div>
       </div>
       <div class="pagination">
@@ -87,7 +94,10 @@ export default {
     this.$http
       .get(dbUrl)
       .then((response) => {
-        this.jobs = Object.values(response.body);
+        this.jobs = Object.values(response.body).map((job) => ({
+          ...job,
+          bookmarked: false,
+        }));
       })
       .catch((error) => {
         console.error("Error fetching jobs:", error);
@@ -103,6 +113,9 @@ export default {
       if (this.currentPage > 1) {
         this.currentPage--;
       }
+    },
+    toggleBookmark(job) {
+      job.bookmarked = !job.bookmarked;
     },
   },
 };

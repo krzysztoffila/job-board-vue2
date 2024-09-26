@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar">
     <div class="nav-left">
-      <div class="logo">MyLogo</div>
+      <div class="logo">Jobtopia</div>
       <div class="nav-links">
         <router-link to="/jobs">Job Offers</router-link>
         <router-link to="/add-job">Add Job</router-link>
