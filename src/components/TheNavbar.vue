@@ -8,7 +8,12 @@
       </div>
     </div>
     <div class="search-bar">
-      <input type="text" v-model="searchQuery" placeholder="Search jobs..." />
+      <input
+        type="text"
+        v-model="searchQuery"
+        @input="updateSearch"
+        placeholder="Search jobs..."
+      />
       <i class="fa fa-search search-icon"></i>
     </div>
   </nav>
@@ -20,6 +25,11 @@ export default {
     return {
       searchQuery: "",
     };
+  },
+  methods: {
+    updateSearch() {
+      this.$emit("search", this.searchQuery);
+    },
   },
 };
 </script>

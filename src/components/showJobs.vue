@@ -1,9 +1,9 @@
 <template>
   <div id="show-jobs">
     <h1>All IT Jobs in one place!</h1>
-    <div v-if="jobs.length === 0">No jobs available.</div>
+    <div v-if="filteredJobs.length === 0">No jobs available.</div>
     <div v-else>
-      <div v-for="(job, index) in jobs" :key="index" class="job-card">
+      <div v-for="(job, index) in filteredJobs" :key="index" class="job-card">
         <div class="company-logo"></div>
         <div class="job-info">
           <h2>{{ job.title }}</h2>
@@ -25,11 +25,30 @@
 
 <script>
 import { toUppercase } from "../helpers/filters.js";
+
 export default {
+  props: {
+    searchQuery: {
+      type: String,
+      default: "",
+    },
+  },
   data() {
     return {
       jobs: [],
     };
+  },
+  computed: {
+    filteredJobs() {
+      return this.jobs.filter(
+        (job) =>
+          job.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          job.category.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          job.tags.some((tag) =>
+            tag.toLowerCase().includes(this.searchQuery.toLowerCase())
+          )
+      );
+    },
   },
   filters: {
     toUppercase,
@@ -48,4 +67,5 @@ export default {
   },
 };
 </script>
+
 <style src="../assets/styles/show-jobs.css"></style>

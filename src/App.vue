@@ -1,9 +1,8 @@
 <template>
   <div class="app">
-    <the-navbar></the-navbar>
+    <the-navbar @search="updateSearch"></the-navbar>
     <div class="container">
-      <!-- <add-job></add-job> -->
-      <show-jobs></show-jobs>
+      <show-jobs :search-query="searchQuery"></show-jobs>
     </div>
   </div>
 </template>
@@ -11,13 +10,19 @@
 <script>
 import showJobs from "@/components/showJobs.vue";
 import TheNavbar from "./components/TheNavbar.vue";
-// import addJob from "./components/addJob.vue";
+
 export default {
   components: { showJobs, TheNavbar },
   data() {
-    return {};
+    return {
+      searchQuery: "", // Nowa właściwość do przechowywania wartości wyszukiwania
+    };
   },
-  methods: {},
+  methods: {
+    updateSearch(query) {
+      this.searchQuery = query; // Aktualizacja wartości wyszukiwania
+    },
+  },
 };
 </script>
 <style>
