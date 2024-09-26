@@ -45,7 +45,46 @@
   height: 24px;
   cursor: pointer;
 }
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
 
+.pagination-button {
+  background: linear-gradient(135deg, #007bff, #ff00ff);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+}
+
+.pagination-button:hover {
+  background: linear-gradient(135deg, #ff00ff, #007bff);
+}
+
+.pagination-button:disabled {
+  background: #ddd;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  margin: 0 10px;
+  font-size: 16px;
+  color: white;
+}
 @media (max-width: 768px) {
   .job-card {
     width: 80%;

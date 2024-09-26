@@ -3,7 +3,7 @@
     <h1>All IT Jobs in one place!</h1>
     <div v-if="filteredJobs.length === 0">No jobs available.</div>
     <div v-else>
-      <div v-for="(job, index) in filteredJobs" :key="index" class="job-card">
+      <div v-for="(job, index) in paginatedJobs" :key="index" class="job-card">
         <div class="company-logo"></div>
         <div class="job-info">
           <h2>{{ job.title }}</h2>
@@ -18,6 +18,25 @@
         <div class="bookmark-icon">
           <img src="@/assets/icons/bookmark.svg" alt="Bookmark" />
         </div>
+      </div>
+      <div class="pagination">
+        <button
+          @click="prevPage"
+          :disabled="currentPage === 1"
+          class="pagination-button"
+        >
+          &lt;
+        </button>
+        <span class="pagination-info"
+          >Page {{ currentPage }} of {{ totalPages }}</span
+        >
+        <button
+          @click="nextPage"
+          :disabled="currentPage === totalPages"
+          class="pagination-button"
+        >
+          &gt;
+        </button>
       </div>
     </div>
   </div>
@@ -36,6 +55,8 @@ export default {
   data() {
     return {
       jobs: [],
+      currentPage: 1,
+      pageSize: 5,
     };
   },
   computed: {
@@ -48,6 +69,13 @@ export default {
             tag.toLowerCase().includes(this.searchQuery.toLowerCase())
           )
       );
+    },
+    totalPages() {
+      return Math.ceil(this.filteredJobs.length / this.pageSize);
+    },
+    paginatedJobs() {
+      const start = (this.currentPage - 1) * this.pageSize;
+      return this.filteredJobs.slice(start, start + this.pageSize);
     },
   },
   filters: {
@@ -64,6 +92,18 @@ export default {
       .catch((error) => {
         console.error("Error fetching jobs:", error);
       });
+  },
+  methods: {
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+      }
+    },
+    prevPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+    },
   },
 };
 </script>
