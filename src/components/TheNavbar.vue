@@ -14,7 +14,11 @@
         @input="updateSearch"
         placeholder="Search jobs..."
       />
-      <i class="fa fa-search search-icon"></i>
+      <img
+        src="@/assets/icons/search.svg"
+        alt="search icon"
+        class="search-icon"
+      />
     </div>
   </nav>
 </template>
