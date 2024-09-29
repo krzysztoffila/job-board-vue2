@@ -2,25 +2,24 @@
   <div class="app">
     <the-navbar @search="updateSearch"></the-navbar>
     <div class="container">
-      <show-jobs :search-query="searchQuery"></show-jobs>
+      <router-view :search-query="searchQuery"> </router-view>
     </div>
   </div>
 </template>
 
 <script>
-import showJobs from "@/components/showJobs.vue";
 import TheNavbar from "./components/TheNavbar.vue";
 
 export default {
-  components: { showJobs, TheNavbar },
+  components: { TheNavbar },
   data() {
     return {
-      searchQuery: "", // Nowa właściwość do przechowywania wartości wyszukiwania
+      searchQuery: "",
     };
   },
   methods: {
     updateSearch(query) {
-      this.searchQuery = query; // Aktualizacja wartości wyszukiwania
+      this.searchQuery = query;
     },
   },
 };
