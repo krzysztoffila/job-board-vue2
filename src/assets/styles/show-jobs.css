@@ -1,6 +1,7 @@
 #show-jobs h1 {
   text-align: center;
 }
+
 .job-card {
   display: flex;
   background: rgba(255, 255, 255, 0.1);
@@ -28,7 +29,6 @@
 .job-card h2 {
   font-size: 20px;
   color: #00ccff;
-  /* color: #40e0d0; */
   margin: 0 0 10px 0;
   text-align: left;
 }
@@ -45,6 +45,7 @@
   height: 24px;
   cursor: pointer;
 }
+
 /* Pagination */
 .pagination {
   display: flex;
@@ -85,6 +86,15 @@
   font-size: 16px;
   color: white;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
 @media (max-width: 768px) {
   .job-card {
     width: 80%;
