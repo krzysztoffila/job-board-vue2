@@ -4,17 +4,18 @@
     <div v-if="filteredJobs.length === 0">No jobs available.</div>
     <div v-else>
       <div v-for="(job, index) in paginatedJobs" :key="index" class="job-card">
-        <div class="company-logo"></div>
-        <div class="job-info">
-          <h2>{{ job.title }}</h2>
-          <p><strong>Category:</strong> {{ job.category }}</p>
-          <p>
-            <strong>Level:</strong>
-            {{ job.levels.join(", ") | toUppercase }}
-          </p>
-          <p><strong>Tags:</strong> {{ job.tags.join(", ") }}</p>
-          <p>{{ job.content }}</p>
-        </div>
+        <router-link :to="{ name: 'singleJob', params: { id: job.id } }">
+          <div class="job-info">
+            <h2>{{ job.title }}</h2>
+            <p><strong>Category:</strong> {{ job.category }}</p>
+            <p>
+              <strong>Level:</strong>
+              {{ job.levels.join(", ") | toUppercase }}
+            </p>
+            <p><strong>Tags:</strong> {{ job.tags.join(", ") }}</p>
+            <p>{{ job.content }}</p>
+          </div>
+        </router-link>
         <div class="bookmark-icon" @click="toggleBookmark(job)">
           <img
             :src="
@@ -50,6 +51,7 @@
 </template>
 
 <script>
+// Importuj filtr i inne potrzebne zasoby
 import { toUppercase } from "../helpers/filters.js";
 
 export default {
@@ -94,9 +96,11 @@ export default {
     this.$http
       .get(dbUrl)
       .then((response) => {
-        this.jobs = Object.values(response.body).map((job) => ({
-          ...job,
-          bookmarked: false,
+        // Tutaj jest fragment, który przypisuje dane z Firebase
+        this.jobs = Object.keys(response.body).map((key) => ({
+          id: key, // Dodaj ID jako klucz
+          ...response.body[key], // Reszta danych z odpowiedzi
+          bookmarked: false, // Dodaj pole do bookmarkowania
         }));
       })
       .catch((error) => {
@@ -120,5 +124,4 @@ export default {
   },
 };
 </script>
-
 <style src="../assets/styles/show-jobs.css"></style>
