@@ -1,0 +1,106 @@
+.single-job-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.single-job {
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  color: white;
+  text-align: center;
+}
+
+.single-job h1 {
+  color: #00ccff;
+  margin-bottom: 20px;
+}
+
+.company-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.company-logo {
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
+}
+
+.logo-gradient {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #007bff, #ff00ff);
+  border-radius: 10px;
+}
+
+.company-name {
+  text-align: left;
+}
+
+.company-name h3 {
+  margin: 0;
+  color: #00ccff;
+}
+
+.job-description,
+.job-details {
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.job-buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  transition: background 0.3s ease;
+  width: 100%;
+  margin: 5px 0;
+}
+
+.back-btn {
+  background: linear-gradient(135deg, #007bff, #ff00ff);
+  color: white;
+}
+
+.apply-btn {
+  background: #00ccff;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+@media (min-width: 768px) {
+  .job-buttons {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .job-buttons .btn {
+    margin: 0;
+    width: auto;
+  }
+}
