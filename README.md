@@ -49,14 +49,6 @@ Aplikacja jest dostępna pod adresem: [Jobtopia](https://jobtopia.netlify.app/)
 2. Aby dodać nową ofertę, kliknij przycisk "Dodaj pracę", wypełnij formularz i zatwierdź.
 3. Oferty są automatycznie zapisywane w bazie danych Firebase i będą dostępne dla wszystkich użytkowników.
 
-## Przykłady użycia
-
-Możesz zobaczyć działanie aplikacji na poniższych zrzutach ekranu (dodaj tutaj zrzuty ekranu, jeśli masz):
-
-![Dashboard](https://imgur.com/v3GkBW8)
-![Pop up po dodaniu oferty](https://imgur.com/K09dVZB)
-![Formularz Add Job](https://imgur.com/zdvUItK)
-
 ## Wkład
 
 Jeśli chcesz przyczynić się do rozwoju projektu, poczuj się swobodnie, aby zgłosić problem lub przesłać pull request.
