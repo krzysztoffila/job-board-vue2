@@ -23,13 +23,13 @@ Aplikacja jest dostępna pod adresem: [Jobtopia](https://jobtopia.netlify.app/)
 1. Sklonuj repozytorium na swój lokalny komputer:
 
    ```bash
-   git clone https://github.com/twoje_uzytkownik/job-dashboard.git
+   git clone git@github.com:krzysztoffila/job-board-vue2.git
    ```
 
 2. Zainstaluj zależności:
 
    ```bash
-   cd job-dashboard
+   cd job-board-vue2
    npm install
    ```
 
