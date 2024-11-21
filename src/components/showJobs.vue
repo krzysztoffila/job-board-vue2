@@ -51,7 +51,6 @@
 </template>
 
 <script>
-// Importuj filtr i inne potrzebne zasoby
 import { toUppercase } from "../helpers/filters.js";
 
 export default {
@@ -96,11 +95,10 @@ export default {
     this.$http
       .get(dbUrl)
       .then((response) => {
-        // Tutaj jest fragment, który przypisuje dane z Firebase
         this.jobs = Object.keys(response.body).map((key) => ({
-          id: key, // Dodaj ID jako klucz
-          ...response.body[key], // Reszta danych z odpowiedzi
-          bookmarked: false, // Dodaj pole do bookmarkowania
+          id: key,
+          ...response.body[key],
+          bookmarked: false,
         }));
       })
       .catch((error) => {
